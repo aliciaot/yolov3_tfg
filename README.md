@@ -1,22 +1,4 @@
-# LogoMix: A Data Augmentation Technique for Object Detection Applied to Logo Recognition
-
-## Paper
-Most of the public logo datasets are very small compared to other object detection datasets. This is a real problem for
-Deep Learning based algorithms that require many samples to learn from. Here, we present LogoMix, a new data augmentation
-method for object detection tasks and applied to logo recognition. For more details, please see our
-[paper](https://ieeexplore.ieee.org/document/9730444). If this repository is useful for your work, please cite our
-paper:
-
-```
-@INPROCEEDINGS{9730444,
-    author={Fuertes, Daniel and del-Blanco, Carlos R. and Jaureguizar, Fernando and Giarcía, Narciso}, 
-    booktitle={2022 IEEE International Conference on Consumer Electronics (ICCE)},
-    title={LogoMix: A Data Augmentation Technique for Object Detection Applied to Logo Recognition},
-    year={2022},
-    pages={1-2},
-    doi={10.1109/ICCE53296.2022.9730444}
-}
-``` 
+# Yolov3 TFG
 
 ## Software requirements
 
