@@ -39,7 +39,7 @@ def get_options(args=None):
     parser.add_argument('--weights_path', type=str, default='yolo3/yolo_weights.h5',
                         help='Pretrained weights file. None for random weights')
 
-    ############################### DATASET
+    # DATASET
     parser.add_argument('--dataset_path', type=str, default='/path/to/dataset',
                         help='Directory containing the dataset.')
     parser.add_argument('--dataset_name', type=str, default='dataset_name',
@@ -54,11 +54,11 @@ def get_options(args=None):
                                                                     'validate. Used if val_path is None or not exists')
     parser.add_argument('--extension', type=str, default='.jpg', help='Image extension.')
 
-    ################################ Classes
+    # Classes
     parser.add_argument('--classes_path', type=str, default='classes.txt',
                         help='Txt with the classes.')
 
-    ################################ Anchors
+    # Anchors
     parser.add_argument('--new_anchors', type=str2bool, default=False,
                         help='True to calculate new anchors and save them in anchors_path')
     parser.add_argument('--anchors_path', type=str, default='yolo3/yolo_anchors.txt', help='Txt with the anchors.')
@@ -66,28 +66,28 @@ def get_options(args=None):
                         help='Number of clusters of K-Means for the anchors. Anchors will be calculated only if'
                              'new_anchors=True. They will be saved in anchors_path file')
 
-    ################################ TRAIN PARAMETERS
+    # TRAIN PARAMETERS
     parser.add_argument('--train_frozen', type=str2bool, default=True, help="Freeze almost all layers while training")
     parser.add_argument('--train_unfrozen', type=str2bool, default=True, help="Unfreeze all layers while training")
 
-    ################################ Batch size
+    # Batch size
     parser.add_argument('--batch_frozen', type=int, default=32, help='Batch size during the frozen stage')
     parser.add_argument('--batch_unfrozen', type=int, default=16, help='Batch size during the unfrozen stage')
 
-    ################################ Learning rate
+    # Learning rate
     parser.add_argument('--lr_frozen', type=float, default=1e-3, help='Initial learning rate for the frozen stage')
     parser.add_argument('--lr_unfrozen', type=float, default=1e-4, help='Initial learning rate for the unfrozen stage')
 
-    ################################ Epochs
+    # Epochs
     parser.add_argument('--epochs_frozen', type=int, default=100, help='Number of epochs for the frozen stage')
     parser.add_argument('--epochs_unfrozen', type=int, default=300, help='Number of epochs for the unfrozen stage')
     parser.add_argument('--initial_epoch', type=int, default=0, help='Initial epoch')
 
-    ################################ Image size
+    # Image size
     parser.add_argument('-iw', '--image_width', type=int, default=448, help="Image width")
     parser.add_argument('-ih', '--image_height', type=int, default=448, help="Image height")
 
-    ################################ EarlyStop and ReduceOnPlateau
+    # EarlyStop and ReduceOnPlateau
     parser.add_argument('--early_stop', type=str2bool, default=False,
                         help="Stop the training if loss is not improved in less than early_stop_period epochs")
     parser.add_argument('--early_stop_period', type=int, default=100,
@@ -109,7 +109,7 @@ def get_options(args=None):
     # Flickr = (70,70) | OpenLogo = (60,40)
 
     # LOGOMIX
-    parser.add_argument('--use_logomix', type=str2bool, default=False, help="Use LogoMix training strategy")
+    parser.add_argument('--use_logomix', type=str2bool, default=True, help="Use LogoMix training strategy")
     parser.add_argument('--use_attentive', type=str2bool, default=False,
                         help="True to use Attentive LogoMix. False to use Non-Attentive LogoMix")
     parser.add_argument('--logomix_perc', type=float, default=0.15,
