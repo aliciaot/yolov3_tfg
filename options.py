@@ -40,22 +40,22 @@ def get_options(args=None):
                         help='Pretrained weights file. None for random weights')
 
     ############################## DATASET
-    parser.add_argument('--dataset_path', type=str, default='/path/to/dataset',
+    parser.add_argument('--dataset_path', type=str, default='/home/aos/aos/yolov3_tfg',
                         help='Directory containing the dataset.')
-    parser.add_argument('--dataset_name', type=str, default='dataset_name',
+    parser.add_argument('--dataset_name', type=str, default='LogoDet-3K',
                         help='Directory containing the dataset.')
-    parser.add_argument('--train_path', type=str, default='train.txt',
+    parser.add_argument('--train_path', type=str, default='/home/aos/aos/yolov3_tfg/datasets/LogoDet-3K/train.txt',
                         help='Txt with train files')
-    parser.add_argument('--test_path', type=str, default='test.txt',
+    parser.add_argument('--test_path', type=str, default='/home/aos/aos/yolov3_tfg/datasets/LogoDet-3K/test.txt',
                         help='Txt with test files')
-    parser.add_argument('--val_path', type=str, default='val.txt',
+    parser.add_argument('--val_path', type=str, default='/home/aos/aos/yolov3_tfg/datasets/LogoDet-3K/val.txt',
                         help='Txt with validation files. If None, val set is created from train set using val_split')
     parser.add_argument('--val_perc', type=float, default=0.1, help='Percentage of files from the train set used to'
                                                                     'validate. Used if val_path is None or not exists')
     parser.add_argument('--extension', type=str, default='.jpg', help='Image extension.')
 
     ############################### Classes
-    parser.add_argument('--classes_path', type=str, default='classes.txt',
+    parser.add_argument('--classes_path', type=str, default='/home/aos/aos/yolov3_tfg/datasets/LogoDet-3K/classes.txt',
                         help='Txt with the classes.')
 
     ############################### Anchors
@@ -79,8 +79,8 @@ def get_options(args=None):
     parser.add_argument('--lr_unfrozen', type=float, default=1e-4, help='Initial learning rate for the unfrozen stage')
 
     ############################### Epochs
-    parser.add_argument('--epochs_frozen', type=int, default=100, help='Number of epochs for the frozen stage')
-    parser.add_argument('--epochs_unfrozen', type=int, default=300, help='Number of epochs for the unfrozen stage')
+    parser.add_argument('--epochs_frozen', type=int, default=50, help='Number of epochs for the frozen stage')
+    parser.add_argument('--epochs_unfrozen', type=int, default=150, help='Number of epochs for the unfrozen stage')
     parser.add_argument('--initial_epoch', type=int, default=0, help='Initial epoch')
 
     ############################### Image size
@@ -90,15 +90,15 @@ def get_options(args=None):
     ############################### EarlyStop and ReduceOnPlateau
     parser.add_argument('--early_stop', type=str2bool, default=False,
                         help="Stop the training if loss is not improved in less than early_stop_period epochs")
-    parser.add_argument('--early_stop_period', type=int, default=100,
+    parser.add_argument('--early_stop_period', type=int, default=20,
                         help='Training stops when model does not improve during this number of consecutive epochs')
-    parser.add_argument('--reduce_lr_period', type=int, default=30,
+    parser.add_argument('--reduce_lr_period', type=int, default=10,
                         help='The lr is reduced if loss is not improved in less than reduce_lr_period epochs')
 
     # Data augmentation
     parser.add_argument('--data_aug', type=str2bool, default=True,
                         help="Apply random transformations to the image during training")
-    parser.add_argument('--crop_aug', type=str2bool, default=True,
+    parser.add_argument('--crop_aug', type=str2bool, default=False,
                         help="Apply random transformations to the new crop inserted during LogoMix training")
 
     # BOUNDING BOXES / POINT-BASED ANNOTATIONS
@@ -109,7 +109,7 @@ def get_options(args=None):
     # Flickr = (70,70) | OpenLogo = (60,40)
 
     # LOGOMIX
-    parser.add_argument('--use_logomix', type=str2bool, default=True, help="Use LogoMix training strategy")
+    parser.add_argument('--use_logomix', type=str2bool, default=False, help="Use LogoMix training strategy")
     parser.add_argument('--use_attentive', type=str2bool, default=False,
                         help="True to use Attentive LogoMix. False to use Non-Attentive LogoMix")
     parser.add_argument('--logomix_perc', type=float, default=0.15,

@@ -100,6 +100,6 @@ def kmeans_anchors(num_anchors, path_anchors):
 
 if __name__ == "__main__":
     cluster_number = 9
-    filename = "/media/data/Databases/Logo_detection/FlickrLogos32/files/sets/trainset.txt"
+    filename = "/home/aos/aos/yolov3_tfg/datasets/LogoDet-3K/train.txt"
     kmeans = YOLO_Kmeans(cluster_number, filename)
     kmeans.txt2clusters()
